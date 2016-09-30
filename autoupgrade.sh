@@ -1,9 +1,9 @@
 #!/bin/bash
 # This script for auto update and upgrade
 
-whoami=`whoami`
+#whoami=`whoami`
 
-if [ "$whoami" == "root" ]; then
+if [ "$(id -u)" == "0" ]; then
   echo -e "You're Super User\n"
   echo -e "Do want to update and upgrade system?[Y/n]"
   read answer
@@ -26,5 +26,5 @@ if [ "$whoami" == "root" ]; then
   fi
 else
   echo -e "You're not Super User"
-  echo -e "Please login as Super user\n"
+  echo -e "Please run as root\n"
 fi
