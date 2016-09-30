@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script for checking super user and for update
+# This script for auto update and upgrade
 
 whoami=`whoami`
 
