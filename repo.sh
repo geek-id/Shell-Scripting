@@ -10,8 +10,26 @@ echo -e "##\t\t\tv.0.0.1 (beta)\t\t\t##"
 echo -e "##\t\t\t\t\t\t\t##"
 echo -e "##########################################################"
 
+source=`pwd`/sources.list
+sourcedest="$source".bak
+
+add_kambing(){
+  if grep -q 'id.ubuntu.com' $source; then
+     echo -e "The repo was listed in file sources.list"
+  else
+     cat $source
+  fi
+}
+
 ubuntu_kambing(){
+   if [ -e $source ];then
+      echo -e "The files was backup"
+      add_kambing
+   else
+      cp $source $sourcedest
+   fi
    echo -e "This is repo of kambing.ui.ac.id";
+
 }
 
 ubuntu_itb(){
@@ -29,7 +47,6 @@ ubuntu_ubaya(){
 ubuntu_all(){
    echo -e "This is repo of all";
 }
-
 
 if [ "$(id -u)" != "0" ]; then
     echo "Please run as root."
