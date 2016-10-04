@@ -10,4 +10,4 @@ echo -e "Thanks's for visit my github page"
 
 Regard's
 
-d_rita12
+Adhitya Putra
