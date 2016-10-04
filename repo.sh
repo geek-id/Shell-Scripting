@@ -14,16 +14,17 @@ source=`pwd`/sources.list
 sourcedest="$source".bak
 
 add_kambing(){
-  if grep -q 'id.ubuntu.com' $source; then
+  if grep -q 'kambing.ui.ac.id' $source; then
      echo -e "The repo was listed in file sources.list"
+     cat $source | grep "kambing"
   else
-     cat $source
+     sed -i "$ a deb http://kambing.ui.ac.id/ubuntu/ xenial main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-updates main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-security main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-backports main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-proposed main restricted universe multiverse" $source
   fi
 }
 
 ubuntu_kambing(){
    if [ -e $source ];then
-      echo -e "The files was backup"
+      echo -e "sources.list was backup"
       add_kambing
    else
       cp $source $sourcedest
@@ -32,7 +33,17 @@ ubuntu_kambing(){
 
 }
 
+add_itb(){
+
+}
+
 ubuntu_itb(){
+   if [ -e $source ];then
+      echo -e "sources.list was backup"
+      add_kambing
+   else
+      cp $source $sourcedest
+   fi
    echo -e "This is repo of itb";
 }
 
