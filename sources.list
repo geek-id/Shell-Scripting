@@ -1,0 +1,13 @@
+### This new Source.list ###
+deb http://kambing.ui.ac.id/ubuntu/ xenial main restricted universe multiverse
+deb http://kambing.ui.ac.id/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://kambing.ui.ac.id/ubuntu/ xenial-security main restricted universe multiverse
+deb http://kambing.ui.ac.id/ubuntu/ xenial-backports main restricted universe multiverse
+deb http://kambing.ui.ac.id/ubuntu/ xenial-proposed main restricted universe multiverse
+
+deb ftp://ftp.itb.ac.id/pub/ubuntu xenial main restricted universe multiverse
+deb ftp://ftp.itb.ac.id/pub/ubuntu xenial-updates main restricted universe multiverse
+deb ftp://ftp.itb.ac.id/pub/ubuntu xenial-security main restricted universe multiverse
+deb ftp://ftp.itb.ac.id/pub/ubuntu xenial-backports main restricted universe multiverse
+deb ftp://ftp.itb.ac.id/pub/ubuntu xenial-proposed main restricted universe multiverse
+

@@ -5,12 +5,17 @@
 echo -e "#########################################################"
 echo -e "##\t\t\t\t\t\t\t##"
 echo -e "##\t       Auto Add Repository Indonesia\t        ##"
+echo -e "##\t       Ubuntu 16.04 (Xenial Xersus)\t        ##"
 echo -e "##  This tools for auto add repository local Indonesia  ##"
 echo -e "##\t\t\tv.0.0.1 (beta)\t\t\t##"
 echo -e "##\t\t\t\t\t\t\t##"
 echo -e "##########################################################"
 
-source=`pwd`/sources.list
+list=sources.list
+#sourcedir=`pwd`
+sourcedir=/etc/apt/
+#source=`pwd`/sources.list
+source=$sourcedir/sources.list
 sourcedest="$source".bak
 
 add_kambing(){
@@ -18,45 +23,75 @@ add_kambing(){
      echo -e "The repo was listed in file sources.list"
      cat $source | grep "kambing"
   else
-     sed -i "$ a deb http://kambing.ui.ac.id/ubuntu/ xenial main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-updates main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-security main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-backports main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-proposed main restricted universe multiverse" $source
+     sed -i "$ a deb http://kambing.ui.ac.id/ubuntu/ xenial main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-updates main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-security main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-backports main restricted universe multiverse\ndeb http://kambing.ui.ac.id/ubuntu/ xenial-proposed main restricted universe multiverse\n" $source
+     cat $source | grep "kambing"
   fi
 }
 
 ubuntu_kambing(){
    if [ -e $source ];then
+      cp $source $sourcedest
       echo -e "sources.list was backup"
       add_kambing
+#   elif [ -e $source ]; then 
+#      cp $source $sourcedest
+#      echo -e "sources.list was backup"
    else
-      cp $source $sourcedest
+      cd $sourcedir && touch $list && cat > $list << EOF
+### This new Source.list ###
+EOF
+      add_kambing
    fi
    echo -e "This is repo of kambing.ui.ac.id";
 
 }
 
 add_itb(){
-
+   if grep -q 'ftp.itb.ac.id' $source; then
+     echo -e "The repo was listed in file sources.list"
+     cat $source | grep "itb"
+  else
+     sed -i "$ a deb ftp://ftp.itb.ac.id/pub/ubuntu xenial main restricted universe multiverse\ndeb ftp://ftp.itb.ac.id/pub/ubuntu xenial-updates main restricted universe multiverse\ndeb ftp://ftp.itb.ac.id/pub/ubuntu xenial-security main restricted universe multiverse\ndeb ftp://ftp.itb.ac.id/pub/ubuntu xenial-backports main restricted universe multiverse\ndeb ftp://ftp.itb.ac.id/pub/ubuntu xenial-proposed main restricted universe multiverse\n" $source
+     cat $source | grep "itb"
+  fi
 }
 
 ubuntu_itb(){
    if [ -e $source ];then
-      echo -e "sources.list was backup"
-      add_kambing
-   else
       cp $source $sourcedest
+      echo -e "sources.list was backup"
+      add_itb
+#   elif [ -e $source ]; then 
+#      cp $source $sourcedest
+#      echo -e "sources.list was backup"
+   else
+      cd $sourcedir && touch $list && cat > $list << EOF
+### This new Source.list ###
+EOF
+      add_itb
    fi
-   echo -e "This is repo of itb";
+   echo -e "This is repo of ftp.itb.ac.id";
+
 }
 
-ubuntu_kartolo(){
-   echo -e "This is repo of kartolo";
-}
-
-ubuntu_ubaya(){
-   echo -e "This is repo of ubaya";
-}
 
 ubuntu_all(){
-   echo -e "This is repo of all";
+   if [ -e $source ];then
+      cp $source $sourcedest
+      echo -e "sources.list was backup"
+      add_kambing
+      add_itb
+#   elif [ -e $source ]; then 
+#      cp $source $sourcedest
+#      echo -e "sources.list was backup"
+   else
+      cd $sourcedir && touch $list && cat > $list << EOF
+### This new Source.list ###
+EOF
+      add_kambing
+      add_itb
+   fi
+   echo -e "This All repo are listed on sources.list";
 }
 
 if [ "$(id -u)" != "0" ]; then
@@ -64,9 +99,9 @@ if [ "$(id -u)" != "0" ]; then
 else
     echo "Do you want add new repository?"
     echo "Avalaible Repository now :"
-    echo -e "1) Kambing UI\t\t4) Ubaya"
-    echo -e "2) ITB\t\t\t5) All Repo"
-    echo -e "3) Kartolo"
+    echo -e "1) Kambing UI"
+    echo -e "2) ITB"
+    echo -e "3) All"
     echo -n "Select your repository for adding: "
     read repo
     #echo -e "$repo"
@@ -77,18 +112,10 @@ case "$repo" in
      ubuntu_kambing
      ;;
    2)
-     echo -e "You're now add repository from ITB"
+     echo -e "You're now add repository from ITB";
      ubuntu_itb
      ;;
    3)
-     echo -e "You're now add repository from Kartolo"
-     ubuntu_kartolo
-     ;;
-   4)
-     echo -e "You're now add reposiroty from Ubaya"
-     ubuntu_ubaya
-     ;;
-   5)
      echo -e "You're now add All Repository"
      ubuntu_all
      ;;
