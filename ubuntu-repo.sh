@@ -5,7 +5,7 @@
 echo -e "#########################################################"
 echo -e "##\t\t\t\t\t\t\t##"
 echo -e "##\t       Auto Add Repository Indonesia\t        ##"
-echo -e "##\t       Ubuntu 16.04 (Xenial Xersus)\t        ##"
+echo -e "##\t       Ubuntu 16.04 (Xenial Xerus)\t        ##"
 echo -e "##  This tools for auto add repository local Indonesia  ##"
 echo -e "##\t\t\tv.0.0.1 (beta)\t\t\t##"
 echo -e "##\t\t\t\t\t\t\t##"
