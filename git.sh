@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo -e "What your file want to upload to github?"
-echo -e "use . or -a for all folder or file"
+echo -e "use . (all folder and file) or -A (all file) for all folder or file"
 echo -n "Filename: "
 read file
 
