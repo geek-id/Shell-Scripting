@@ -17,7 +17,7 @@ case "$choice" in
       git clone $url
       ;;
    2)
-      echo -e "What your file want to upload to github?"
+      echo -e "What your file want to upload?"
       echo -e "use . (all folder and file) or -A (all file) for all folder or file"
       echo -n "Filename: "
       read file
