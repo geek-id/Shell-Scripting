@@ -39,14 +39,9 @@ case "$choice" in
         
       if [ -z "$origin" ];then
          origin="origin"    
-         echo "$origin"
-         #git push -u "$origin" master
+         git push -u "$origin" master
       else
-         # regex='[-A-Za-z0-9\+&@#/%?=~_|!:,.;]'
-         # if [[ $origin =~ $regex ]]; then
-            #git push -u "$origin" master
-            echo "$origin"
-         # fi
+         git push -u "$origin" master
       fi
       ;;
     *)
