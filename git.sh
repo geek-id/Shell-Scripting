@@ -34,7 +34,7 @@ case "$choice" in
       read commit
       git commit -m "$commit"
 
-      echo -n "Push as origin (default) or another: "
+      echo -n "Push as origin (default) or another:[Enter to use default] "
       read origin
         
       if [ -z "$origin" ];then
