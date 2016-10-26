@@ -3,7 +3,7 @@
 # Bash Scripting for connect wifi via terminal
 # created by github.com/geek-id
 
-wifiadpt=$(ifconfig -a | sed 's/[ \t].*//;/^\(lo\|\)$/d' | grep "^wlp[0-9]s[0-9]\+")
+wifiadpt=$(ifconfig -a | sed 's/[ \t].*//;/^\(lo\|\)$/d' | grep "^wl*")
 
 echo -e "Wi-Fi Adapter available: "
 echo $wifiadpt
