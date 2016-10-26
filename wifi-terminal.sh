@@ -3,19 +3,41 @@
 # Bash Scripting for connect wifi via terminal
 # created by github.com/geek-id
 
-int=$(ifconfig -a | sed 's/[ \t].*//;/^\(lo\|\)$/d' | grep "^wlp[0-9]s[0-9]\+")
+wifiadpt=$(ifconfig -a | sed 's/[ \t].*//;/^\(lo\|\)$/d' | grep "^wlp[0-9]s[0-9]\+")
 
-state=$(cat /sys/class/net/"$int"/operstate)
+echo -e "Wi-Fi Adapter available: "
+echo $wifiadpt
+echo -e ""
+echo -n "Select Wi-Fi adapter: "
+read int
+regex='[-A-Za-z0-9\+&@#/%=~_|]'
+if [[ $int =~ $regex ]] && [[ $int == $wifiadpt ]];then
 
-if [ $state == 'up' ];then
-	echo "$int Ready"
+	state=$(cat /sys/class/net/"$int"/operstate)
+
+	if [ $state == 'up' ];then
+		echo "$int Ready"
+	else
+		ifconfig "$int" up
+	fi
+	
 else
-	ifconfig "$int" up
+	echo -e "Wrong input"
 fi
+
+
+# state=$(cat /sys/class/net/"$int"/operstate)
+
+# if [ $state == 'up' ];then
+# 	echo "$int Ready"
+# else
+# 	ifconfig "$int" up
+# fi
+clear;
 
 echo -e "\nAvailable Wi-Fi : "
 iwlist "$int" scan | awk -F ":" '/ESSID:/ {print $2;}'
-
+echo -e ""
 echo -n "Select Wi-Fi: "
 read wifi
 regex='[-A-Za-z0-9\+&@#/%=~_|]'
@@ -24,6 +46,7 @@ if [[ $wifi =~ $regex ]];then
 else
 	echo -e "Wrong input"
 fi
+clear ;
 
 wpafolder=/etc/wpa
 wpafile=wpa.conf
