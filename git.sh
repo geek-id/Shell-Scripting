@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "Simple tools Git"
+echo -e "Simple tools Git Clone and Push"
 
 echo -e "1) Git Clone"
 echo -e "2) Git Push"
