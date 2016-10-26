@@ -8,13 +8,19 @@ echo -e "2) Push Git"
 echo -n "Your choice: "
 read choice
 
+
 case "$choice" in
    1)
       echo -e "Do you want clone some project?"
       echo -n "Enter URL here: "
       read url
+      regex='(https?|ssh)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
 
-      git clone $url
+      if [[ $url =~ $regex ]]; then
+         git clone $url
+      else
+         echo -e "Invalid URL for Git Clone"
+      fi
       ;;
    2)
       echo -e "What your file want to upload?"
