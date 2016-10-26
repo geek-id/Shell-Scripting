@@ -90,6 +90,6 @@ echo -e "\n"
 wpa=$wpafolder/$wpafile
 wpa_passphrase $wifi $pass > $wpa
 
-wpa_supplicant -D wext -i "$int" -c/"$wpa" -B
+wpa_supplicant -D wext -i "$int" -c "$wpa" -B
 
 dhclient $int
