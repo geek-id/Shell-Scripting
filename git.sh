@@ -2,8 +2,8 @@
 
 echo -e "Simple tools Git"
 
-echo -e "1) Clone Git"
-echo -e "2) Push Git"
+echo -e "1) Git Clone"
+echo -e "2) Git Push"
 
 echo -n "Your choice: "
 read choice
