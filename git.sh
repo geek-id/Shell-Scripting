@@ -4,6 +4,7 @@ echo -e "Simple tools Git Clone and Push"
 
 echo -e "1) Git Clone"
 echo -e "2) Git Push"
+echo -e "3) Git Remote"
 
 echo -e "\nUse 'q' for quit"
 echo -n "Your choice: "
@@ -14,7 +15,7 @@ case "$choice" in
    1)
       echo -e "Do you want clone some project?"
       echo -e "\nUse 'q' for quit"
-      echo -n "Enter URL here: "
+      echo -n "Enter URL clone here: "
       read url
       regex='(https?|ssh)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
 
@@ -48,6 +49,24 @@ case "$choice" in
          git push -u "$origin" master
       else
          git push -u "$origin" master
+      fi
+      ;;
+
+    3)
+      echo -e "\nRemote some project?"
+      echo -e "\nUse 'q' for quit"
+      echo -n "Enter URL remote here: "
+      read remote
+      regex='(https?|ssh)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
+
+      if [[ $remote =~ $regex ]]; then
+         git remote add origin $remote
+      else
+          if [ $remote == 'q' ]; then
+            exit 0;
+          fi
+
+         echo -e "Invalid URL for Git Remote"
       fi
 
       ;;
