@@ -32,7 +32,7 @@ case "$choice" in
       ;;
    2)
       echo -e "What your file want to upload?"
-      echo -e "use : \n. (all folder and file) \n-A (all file) \nfor all folder or file \nOr you can type filename ex. \"git.sh\" or \"git*\""
+      echo -e "use : \n. (all folder and file) \n-A (all file) \nOr you can type filename ex. \"git.sh\" or \"git*\""
       echo -n "Filename: "
       read file
 
