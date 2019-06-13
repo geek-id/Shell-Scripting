@@ -4,7 +4,7 @@ This Repository of ***Bash Shell Scripting*** for very simple developing Linux S
 #!/bin/bash
 # This script just for develop Linux System Administratioin
 
-echo -e "This script created by Adhitya Putra a.k.a d_rita12"
+echo -e "This script created by Adhitya Putra a.k.a geekid"
 echo -e "Thanks's for visit my github page"
 ````
 
